@@ -138,10 +138,10 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_role_policy_attachment" "custom" {
-  count = var.create_role ? coalesce(var.number_of_custom_role_policy_arns, length(var.custom_role_policy_arns)) : 0
+  for_each = { for k, v in var.custom_role_policy_arns : k => v if var.create_role }
 
   role       = aws_iam_role.this[0].name
-  policy_arn = element(var.custom_role_policy_arns, count.index)
+  policy_arn = each.value
 }
 
 resource "aws_iam_role_policy_attachment" "admin" {

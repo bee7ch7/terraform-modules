@@ -78,8 +78,8 @@ variable "tags" {
 
 variable "custom_role_policy_arns" {
   description = "List of ARNs of IAM policies to attach to IAM role"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 
 variable "custom_role_trust_policy" {
