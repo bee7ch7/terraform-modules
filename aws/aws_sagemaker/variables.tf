@@ -62,7 +62,7 @@ variable "user_profiles" {
   type = map(object({
     role_arn  = optional(string, null)
     role_name = optional(string, null)
-    policies  = optional(list(string), [])
+    policies  = optional(map(string), {})
   }))
   default     = {}
   description = "Map with user profiles and settings"
