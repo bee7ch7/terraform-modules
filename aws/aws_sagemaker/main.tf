@@ -34,35 +34,6 @@ data "aws_iam_policy_document" "default" {
   }
 }
 
-# resource "aws_iam_role_policy_attachment" "this" {
-#   for_each   = { for profile in var.sagemaker_profile_list : profile.username => profile }
-#   policy_arn = aws_iam_policy.custom_policy.arn
-#   role       = "${lower(each.value.username)}-${local.sagemaker_exec_role_prefix}"
-
-#   depends_on = [
-#     aws_iam_role.default
-#   ]
-# }
-
-# resource "aws_sagemaker_user_profile" "this" {
-#   count             = var.create_user_profile ? 1 : 0
-#   domain_id         = aws_sagemaker_domain.this[0].id
-#   tags              = var.tags
-#   user_profile_name = var.user_profile_name
-#   user_settings {
-#     # default_landing_uri = null
-#     execution_role = var.create_user_profile_execution_role ? aws_iam_role.default[0].arn : var.user_profile_execution_role
-#     # security_groups     = []
-#     # studio_web_portal   = null
-#     space_storage_settings {
-#       default_ebs_storage_settings {
-#         default_ebs_volume_size_in_gb = var.default_ebs_volume_size_in_gb
-#         maximum_ebs_volume_size_in_gb = var.maximum_ebs_volume_size_in_gb
-#       }
-#     }
-#   }
-# }
-
 resource "aws_sagemaker_user_profile" "this" {
   for_each          = var.user_profiles
   domain_id         = aws_sagemaker_domain.this[0].id
@@ -94,51 +65,3 @@ module "user_profile_execution_role" {
 
   tags = var.tags
 }
-
-
-# resource "aws_iam_role" "user_profile" {
-#   count              = var.create_user_profile_execution_role ? 1 : 0
-#   name               = var.user_profile_execution_role_name
-#   path               = "/"
-#   assume_role_policy = data.aws_iam_policy_document.user_profile[0].json
-# }
-
-# data "aws_iam_policy_document" "user_profile" {
-#   count = var.create_user_profile_execution_role ? 1 : 0
-#   statement {
-#     actions = ["sts:AssumeRole"]
-
-#     principals {
-#       type        = "Service"
-#       identifiers = ["sagemaker.amazonaws.com"]
-#     }
-#   }
-# }
-
-# resource "aws_iam_role" "user_profile" {
-#   for_each           = var.user_profiles
-#   name               = "sagemaker-user-${each.key}-execution-role"
-#   path               = "/"
-#   assume_role_policy = data.aws_iam_policy_document.user_profile.json
-# }
-
-# data "aws_iam_policy_document" "user_profile" {
-#   statement {
-#     actions = ["sts:AssumeRole"]
-
-#     principals {
-#       type        = "Service"
-#       identifiers = ["sagemaker.amazonaws.com"]
-#     }
-#   }
-# }
-
-# resource "aws_iam_role_policy_attachment" "this" {
-#   for_each           = var.user_profiles
-#   policy_arn = 
-#   role       = aws_iam_role.user_profile[each.key].name
-
-#   depends_on = [
-#     aws_iam_role.user_profile
-#   ]
-# }

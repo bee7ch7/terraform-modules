@@ -47,7 +47,7 @@ variable "trusted_role_services" {
 }
 
 variable "policies_arns" {
-  type        = list(any)
-  default     = []
-  description = "List of policies ARNs"
+  type        = map(string)
+  default     = {}
+  description = "Map of policies ARNs"
 }
