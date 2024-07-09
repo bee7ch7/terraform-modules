@@ -1,25 +1,25 @@
 resource "aws_cloudwatch_metric_alarm" "this" {
-  for_each = { for index, value in var.alert_settings : value.dimensions.path => value }
+  create = var.create ? 1 : 0
 
-  alarm_name          = "${local.environment}-job-${each.key}-count-4xx"
-  comparison_operator = each.value.comparison_operator
-  evaluation_periods  = each.value.evaluation_periods
-  datapoints_to_alarm = each.value.datapoints_to_alarm
-  period              = each.value.period
-  metric_name         = each.value.dimensions.metric_name
-  namespace           = each.value.namespace
-  statistic           = each.value.statistic
-  threshold           = each.value.threshold
-  treat_missing_data  = each.value.treat_missing_data
+  alarm_name          = var.alarm_name
+  comparison_operator = var.comparison_operator
+  evaluation_periods  = var.evaluation_periods
+  datapoints_to_alarm = var.datapoints_to_alarm
+  period              = var.period
+  metric_name         = var.dimensions.metric_name
+  namespace           = var.namespace
+  statistic           = var.statistic
+  threshold           = var.threshold
+  treat_missing_data  = var.treat_missing_data
 
   alarm_description = "Trigger an alert when the count of 4xx errors on ${each.key} breaches threshold"
-  alarm_actions     = each.value.alarm_actions
-  ok_actions        = each.value.ok_actions
+  alarm_actions     = var.alarm_actions
+  ok_actions        = var.ok_actions
 
-  dimensions = each.value.dimensions
+  dimensions = var.dimensions
 
   dynamic "metric_query" {
-    for_each = each.value.metric_queries
+    for_each = var.metric_queries
     content {
       id          = lookup(metric_query.value, "id")
       account_id  = lookup(metric_query.value, "account_id", null)
