@@ -6,13 +6,13 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   evaluation_periods  = var.evaluation_periods
   datapoints_to_alarm = var.datapoints_to_alarm
   period              = var.period
-  metric_name         = var.dimensions.metric_name
+  metric_name         = var.dimensions
   namespace           = var.namespace
   statistic           = var.statistic
   threshold           = var.threshold
   treat_missing_data  = var.treat_missing_data
 
-  alarm_description = "Trigger an alert when the count of 4xx errors on ${each.key} breaches threshold"
+  alarm_description = var.alarm_description
   alarm_actions     = var.alarm_actions
   ok_actions        = var.ok_actions
 
