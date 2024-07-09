@@ -6,7 +6,7 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   evaluation_periods  = var.evaluation_periods
   datapoints_to_alarm = var.datapoints_to_alarm
   period              = var.period
-  metric_name         = var.dimensions
+  metric_name         = var.metric_name
   namespace           = var.namespace
   statistic           = var.statistic
   threshold           = var.threshold

@@ -20,6 +20,18 @@ variable "alarm_description" {
   default     = null
 }
 
+variable "metric_name" {
+  type        = string
+  description = "The name for the alarm's associated metric"
+  default     = null
+}
+
+variable "namespace" {
+  type        = string
+  description = "The namespace for the alarm"
+  default     = null
+}
+
 variable "threshold" {
   type        = string
   description = "Value against specified statistic is compared"
