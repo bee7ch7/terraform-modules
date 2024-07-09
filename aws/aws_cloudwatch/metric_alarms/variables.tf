@@ -5,8 +5,9 @@ variable "create" {
 }
 
 variable "dimensions" {
-  description = "Dimensions for the alert"
   type        = any
+  description = "Dimensions for the alert"
+  default     = null
 }
 
 variable "alarm_name" {
