@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "this" {
-  create = var.create ? 1 : 0
+  count = var.create ? 1 : 0
 
   alarm_name          = var.alarm_name
   comparison_operator = var.comparison_operator
