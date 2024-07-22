@@ -13,7 +13,7 @@ variable "name" {
 }
 
 variable "description" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -23,4 +23,9 @@ variable "ports_in" {
 
 variable "ports_out" {
   type = map(any)
+}
+
+variable "tags" {
+  type    = map(any)
+  default = {}
 }
