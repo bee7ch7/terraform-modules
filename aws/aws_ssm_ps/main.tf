@@ -16,5 +16,5 @@ resource "random_password" "this" {
   upper            = true
   lower            = true
   special          = true
-  override_special = "!#$&*="
+  override_special = "!#&*="
 }
