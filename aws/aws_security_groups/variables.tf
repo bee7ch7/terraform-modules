@@ -8,16 +8,13 @@ variable "vpc_id" {
   type        = string
 }
 
-# variable "groups" {
-#   type = map(any)
-# }
-
-variable "environment" {
-  description = "Environment"
-}
-
 variable "name" {
   type = string
+}
+
+variable "description" {
+  type = string
+  default = ""
 }
 
 variable "ports_in" {
