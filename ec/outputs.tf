@@ -1,9 +1,3 @@
-output "ec_deployment" {
-  value       = ec_deployment.this
-  description = "description"
-  sensitive   = true
-}
-
 output "alias" {
   value       = ec_deployment.this[0].alias
   description = "Elasticsearch stack alias"
