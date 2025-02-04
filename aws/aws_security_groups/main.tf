@@ -2,9 +2,9 @@ resource "aws_security_group" "this" {
 
   count = var.create ? 1 : 0
 
-  name   = var.name
+  name        = var.name
   description = var.description
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 
   dynamic "ingress" {
     for_each = var.ports_in

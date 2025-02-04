@@ -55,4 +55,3 @@ variable "service_discovery_sevices" {
   default     = {}
   description = "Map with service configuration"
 }
-

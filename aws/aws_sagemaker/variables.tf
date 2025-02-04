@@ -73,4 +73,3 @@ variable "user_profile_trusted_role_services" {
   default     = ["sagemaker.amazonaws.com"]
   description = "List of trusted services"
 }
-

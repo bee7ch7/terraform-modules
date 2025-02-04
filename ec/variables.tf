@@ -35,7 +35,7 @@ variable "deployment_template_id" {
 
 variable "observability" {
   type = object({
-    deployment_id = optional(string, null) # Use "self" to deploy observability within same Elasticsearch instance 
+    deployment_id = optional(string, null) # Use "self" to deploy observability within same Elasticsearch instance
     logs          = optional(bool, true)
     metrics       = optional(bool, true)
     ref_id        = optional(string, null)

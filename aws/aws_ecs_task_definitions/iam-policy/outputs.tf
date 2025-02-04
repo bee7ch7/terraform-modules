@@ -5,9 +5,9 @@ output "policy_id" {
 output "policy_arn" {
   value = { for k, v in aws_iam_policy.this : k => v.arn }
 }
-  
+
 output "list_of_policy_arns" {
-  value = [ for k, v in aws_iam_policy.this : v.arn ]
+  value = [for k, v in aws_iam_policy.this : v.arn]
 }
 
 output "policy_name" {

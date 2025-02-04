@@ -27,5 +27,3 @@ output "task_iam_role_arn" {
   description = "ARN of IAM role"
   value       = try(module.task_role[0].iam_role_arn, "")
 }
-
-

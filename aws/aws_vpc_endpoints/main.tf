@@ -58,7 +58,7 @@ resource "aws_vpc_endpoint" "this" {
 resource "aws_ec2_instance_connect_endpoint" "this" {
   for_each = length(var.ec2_instance_connect_endpoints) > 0 ? var.ec2_instance_connect_endpoints : {}
 
-  subnet_id = each.value.subnet_id
+  subnet_id          = each.value.subnet_id
   security_group_ids = try(each.value.security_group_ids, null)
   preserve_client_ip = try(each.value.preserve_client_ip, true)
 

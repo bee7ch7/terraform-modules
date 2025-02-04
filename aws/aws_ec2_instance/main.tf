@@ -558,6 +558,6 @@ resource "aws_eip" "this" {
   instance = aws_instance.this[0].id
 
   tags = {
-    Name        = "eip-${var.name}"
+    Name = "eip-${var.name}"
   }
 }

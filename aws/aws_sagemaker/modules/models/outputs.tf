@@ -17,4 +17,3 @@ output "model_execution_role_arn" {
   value       = try(module.execution_role[0].iam_role_arn, "")
   description = "Model ARN"
 }
-
