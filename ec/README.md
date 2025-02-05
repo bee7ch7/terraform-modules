@@ -60,6 +60,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_alias"></a> [alias](#output\_alias) | Elasticsearch stack alias |
+| <a name="output_cloud_id"></a> [cloud\_id](#output\_cloud\_id) | Elasticsearch stack cloud id |
 | <a name="output_ec_version"></a> [ec\_version](#output\_ec\_version) | Elasticsearch stack alias |
 | <a name="output_elasticsearch_credentials"></a> [elasticsearch\_credentials](#output\_elasticsearch\_credentials) | Elasticsearch credentials |
 | <a name="output_elasticsearch_endpoints"></a> [elasticsearch\_endpoints](#output\_elasticsearch\_endpoints) | Elasticsearch endpoints |

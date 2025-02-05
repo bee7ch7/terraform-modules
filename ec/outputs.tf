@@ -8,6 +8,11 @@ output "ec_version" {
   description = "Elasticsearch stack alias"
 }
 
+output "cloud_id" {
+  value       = ec_deployment.this[0].elasticsearch.cloud_id
+  description = "Elasticsearch stack cloud id"
+}
+
 output "stack_name" {
   value       = ec_deployment.this[0].name
   description = "Elasticsearch stack alias"
