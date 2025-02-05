@@ -71,4 +71,5 @@ output "ssm_parameter_names" {
 output "apm_secret_token" {
   value       = try(ec_deployment.this[0].apm_secret_token)
   description = "APM secret token"
+  sensitive   = true
 }
