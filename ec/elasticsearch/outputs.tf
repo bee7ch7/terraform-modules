@@ -67,3 +67,8 @@ output "ssm_parameter_names" {
   }
   description = "Kibana endpoints"
 }
+
+output "apm_secret_token" {
+  value       = try(ec_deployment.this[0].apm_secret_token)
+  description = "APM secret token"
+}
